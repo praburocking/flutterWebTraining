@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:myapp/CompName.dart';
 import 'package:myapp/InnerNavBar.dart';
 
@@ -8,6 +9,13 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
+  bool signOut = false;
+  void handleSignOut() {
+    setState(() {
+      signOut = !signOut;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -19,8 +27,15 @@ class _NavBarState extends State<NavBar> {
         child: Stack(
           children: [
             CompName(),
-            Container(alignment: Alignment.center, child: InnerNavBar()),
-            Container(alignment: Alignment.bottomCenter, child: null)
+            InnerNavBar(),
+            Container(
+                alignment: Alignment.bottomCenter,
+                child: NavItem(
+                  name: 'Home',
+                  touched: handleSignOut,
+                  active: signOut,
+                  icon: Feather.log_out,
+                ))
           ],
         ),
       ),

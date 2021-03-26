@@ -23,41 +23,44 @@ class _InnerNavBarState extends State<InnerNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 350,
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            NavItem(
-              name: 'Home',
-              touched: () => {touched(0)},
-              selected: selectList[0],
-              iconData: Feather.home,
-            ),
-            NavItem(
-              name: 'Home',
-              touched: () => {touched(1)},
-              selected: selectList[1],
-              iconData: Feather.message_square,
-            ),
-            NavItem(
-              name: 'Home',
-              touched: () => {touched(2)},
-              selected: selectList[2],
-              iconData: Feather.settings,
-            )
-          ],
-        ));
+    return Positioned(
+      top: 120,
+      child: Container(
+          height: 450,
+          alignment: Alignment.center,
+          child: Column(
+            children: [
+              NavItem(
+                name: 'Home',
+                touched: () => {touched(0)},
+                active: selectList[0],
+                icon: Feather.home,
+              ),
+              NavItem(
+                name: 'Home',
+                touched: () => {touched(1)},
+                active: selectList[1],
+                icon: Feather.message_square,
+              ),
+              NavItem(
+                name: 'Home',
+                touched: () => {touched(2)},
+                active: selectList[2],
+                icon: Feather.settings,
+              )
+            ],
+          )),
+    );
   }
 }
 
 class NavItem extends StatefulWidget {
   final String name;
-  final bool selected;
-  final IconData iconData;
+  final bool active;
+  final IconData icon;
   final Function touched;
 
-  NavItem({this.name, this.selected, this.iconData, this.touched});
+  NavItem({this.name, this.active, this.icon, this.touched});
   @override
   _NavItemState createState() => _NavItemState();
 }
@@ -65,49 +68,43 @@ class NavItem extends StatefulWidget {
 class _NavItemState extends State<NavItem> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: () {
-            widget.touched();
-          },
-          splashColor: Colors.amber[200],
-          hoverColor: Colors.amber[200],
-          child: Container(
-              padding: EdgeInsets.symmetric(vertical: 3),
-              child: Row(
-                children: [
-                  Container(
-                    height: 60,
-                    width: 80,
-                    child: Row(
-                      children: [
-                        AnimatedContainer(
-                          duration: Duration(milliseconds: 465),
-                          decoration: BoxDecoration(
-                              color: widget.selected
-                                  ? Colors.amber[200]
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(5),
-                                  bottomRight: Radius.circular(5))),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(30),
-                          child: Icon(
-                            widget.iconData,
-                            color: widget.selected
-                                ? Colors.accents[200]
-                                : Colors.transparent,
-                            size: 19.0,
-                          ),
-                        )
-                      ],
-                    ),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          print(widget.icon);
+          widget.touched();
+        },
+        splashColor: Colors.white,
+        hoverColor: Colors.white12,
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 3.0),
+          height: 60.0,
+          width: 100.0,
+          child: Row(
+            children: [
+              AnimatedContainer(
+                duration: Duration(milliseconds: 475),
+                height: 60.0,
+                width: 5.0,
+                decoration: BoxDecoration(
+                  color: widget.active ? Colors.amber : Colors.transparent,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(10.0),
+                    bottomRight: Radius.circular(10.0),
                   ),
-                ],
-              )),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 30.0),
+                child: Icon(
+                  widget.icon,
+                  color: widget.active ? Colors.amber : Colors.black,
+                  size: 19.0,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
