@@ -95,12 +95,15 @@ class _NavItemState extends State<NavItem> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 30.0),
-                child: Icon(
-                  widget.icon,
-                  color: widget.active ? Colors.amber : Colors.black,
-                  size: 19.0,
+              Container(
+                height: 60,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 30.0),
+                  child: Icon(
+                    widget.icon,
+                    color: widget.active ? Colors.amber : Colors.black,
+                    size: 19.0,
+                  ),
                 ),
               ),
             ],
