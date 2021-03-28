@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/dashboard/CardsScreen.dart';
 import 'package:myapp/dashboard/Tabs.dart';
-import 'package:myapp/dashboard/quickViewCarts.dart';
 
 class DashBoard extends StatefulWidget {
   @override

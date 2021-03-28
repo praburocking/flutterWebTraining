@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/dashboard/quickViewCarts.dart';
+import 'package:myapp/dashboard/DraggableCard.dart';
 
 class StageView extends StatefulWidget {
   final String stageName;
@@ -30,7 +30,7 @@ class _StageViewState extends State<StageView> {
             children: [
               Container(
                 height: 50,
-                width: 260,
+                width: 255,
                 margin: EdgeInsets.only(bottom: 10),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
@@ -43,7 +43,7 @@ class _StageViewState extends State<StageView> {
               Container(
                 height: 50,
                 width: 50,
-                margin: EdgeInsets.only(bottom: 10),
+                margin: EdgeInsets.only(left: 5, bottom: 10),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                     color: Color(widget.headerColor),
@@ -58,42 +58,42 @@ class _StageViewState extends State<StageView> {
             child: ListView(
               padding: const EdgeInsets.all(10),
               children: [
-                QuickViewCart(
+                DraggableCard(
                   icon: Feather.bell,
                   hoverColor: Colors.amber,
                   text: text,
                   title: "qwerty",
                   percent: 60,
                 ),
-                QuickViewCart(
+                DraggableCard(
                   icon: Feather.bell,
                   hoverColor: Colors.amber,
                   text: text,
                   title: "qwerty",
                   percent: 60,
                 ),
-                QuickViewCart(
+                DraggableCard(
                   icon: Feather.bell,
                   hoverColor: Colors.amber,
                   text: text,
                   title: "qwerty",
                   percent: 60,
                 ),
-                QuickViewCart(
+                DraggableCard(
                   icon: Feather.bell,
                   hoverColor: Colors.amber,
                   text: text,
                   title: "qwerty",
                   percent: 60,
                 ),
-                QuickViewCart(
+                DraggableCard(
                   icon: Feather.bell,
                   hoverColor: Colors.amber,
                   text: text,
                   title: "qwerty",
                   percent: 60,
                 ),
-                QuickViewCart(
+                DraggableCard(
                   icon: Feather.bell,
                   hoverColor: Colors.amber,
                   text: text,
