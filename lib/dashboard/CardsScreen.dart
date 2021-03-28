@@ -7,10 +7,16 @@ class CardsScreen extends StatefulWidget {
 }
 
 class _CardsScreenState extends State<CardsScreen> {
-  // List<Map<String,Dynamic>> cardsData=null;
-
-  String text =
-      "Note the fromJson factory method called on the PortalInfo which takes the Map<String, dynamic> object and returns the parsed PortalInfo object.";
+  List<Map<String, dynamic>> cardsData = [
+    {"headerColor": 0xffBBFF33, "stageName": 'Start', "stageId": '23423423'},
+    {"headerColor": 0xff33C4FF, "stageName": 'process', "stageId": '23423423'},
+    {
+      "headerColor": 0xffAF33FF,
+      "stageName": 'waiting for dependency',
+      "stageId": '23423423'
+    },
+    {"headerColor": 0xffFF3342, "stageName": 'closed', "stageId": '23423423'}
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -18,45 +24,16 @@ class _CardsScreenState extends State<CardsScreen> {
       margin: EdgeInsets.only(top: 50, left: 25),
       width: MediaQuery.of(context).size.width - 120,
       height: MediaQuery.of(context).size.height - 200,
-      child: ListView(
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        children: [
-          StageView(
-            headerColor: 0xffB8FF33,
+        itemCount: cardsData.length,
+        itemBuilder: (context, index) {
+          return StageView(
+            headerColor: cardsData[index]["headerColor"],
             stageName: 'Start',
             stageId: 'werwrw',
-          ),
-          StageView(
-            headerColor: 0xff33C4FF,
-            stageName: 'process',
-            stageId: 'werwrw',
-          ),
-          StageView(
-            headerColor: 0xffAF33FF,
-            stageName: 'dependency open',
-            stageId: 'werwrw',
-          ),
-          StageView(
-            headerColor: 0xffFF3342,
-            stageName: 'failed',
-            stageId: 'werwrw',
-          ),
-          StageView(
-            headerColor: 0xff3CFF33,
-            stageName: 'sucess',
-            stageId: 'werwrw',
-          ),
-          StageView(
-            headerColor: 0xff3CFF33,
-            stageName: 'unprocessed',
-            stageId: 'werwrw',
-          ),
-          StageView(
-            headerColor: 0xff3CFF33,
-            stageName: 'unprocessed',
-            stageId: 'werwrw',
-          )
-        ],
+          );
+        },
       ),
     );
   }

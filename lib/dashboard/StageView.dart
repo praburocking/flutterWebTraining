@@ -26,16 +26,33 @@ class _StageViewState extends State<StageView> {
           color: Colors.grey[100], borderRadius: BorderRadius.circular(20)),
       child: Column(
         children: [
-          Container(
-            height: 50,
-            margin: EdgeInsets.only(bottom: 10),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Color(widget.headerColor),
-                borderRadius: BorderRadius.circular(10)),
-            child: Text(widget.stageName,
-                style: GoogleFonts.quicksand(
-                    fontSize: 16, fontWeight: FontWeight.bold)),
+          Row(
+            children: [
+              Container(
+                height: 50,
+                width: 260,
+                margin: EdgeInsets.only(bottom: 10),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Color(widget.headerColor),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Text(widget.stageName,
+                    style: GoogleFonts.quicksand(
+                        fontSize: 16, fontWeight: FontWeight.bold)),
+              ),
+              Container(
+                height: 50,
+                width: 50,
+                margin: EdgeInsets.only(bottom: 10),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: Color(widget.headerColor),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Text("+",
+                    style: GoogleFonts.quicksand(
+                        fontSize: 16, fontWeight: FontWeight.bold)),
+              ),
+            ],
           ),
           Expanded(
             child: ListView(
