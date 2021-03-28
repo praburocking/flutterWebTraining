@@ -68,7 +68,7 @@ class _KanbanCardState extends State<KanbanCard> {
               margin: EdgeInsets.only(top: 5),
               child: Text(
                 widget.text,
-                style: GoogleFonts.akronim(
+                style: GoogleFonts.quicksand(
                     fontWeight: FontWeight.w100, fontSize: 15),
               ),
             )

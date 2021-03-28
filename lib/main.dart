@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/Dashboard.dart';
 import 'package:myapp/NavBar.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
+  setPathUrlStrategy();
   runApp(MaterialApp(home: MyApp()));
 }
 

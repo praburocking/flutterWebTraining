@@ -9,7 +9,12 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
-  List<String> tabs = ['home', 'testing', 'dependency waiting', 'completed'];
+  List<String> tabs = [
+    'All Items',
+    'My Items',
+    'My Follower\'s Item',
+    'My Item + My Follower\'s Item'
+  ];
   int selected = 0;
   void tabSelect(int num) {
     setState(() {

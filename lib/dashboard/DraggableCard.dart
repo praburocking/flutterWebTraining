@@ -47,7 +47,8 @@ class _DraggableCardState extends State<DraggableCard> {
             },
             child: Draggable(
               child: kanbanCard,
-              feedback: kanbanCard,
+              feedback:
+                  Material(type: MaterialType.transparency, child: kanbanCard),
               data: {"id": widget.id},
             )));
   }
