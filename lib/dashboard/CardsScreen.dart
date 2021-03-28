@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/dashboard/quickViewCarts.dart';
+import 'package:myapp/dashboard/StageView.dart';
 
 class CardsScreen extends StatefulWidget {
   @override
@@ -18,343 +16,46 @@ class _CardsScreenState extends State<CardsScreen> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 50, left: 25),
-      child: Row(
+      width: MediaQuery.of(context).size.width - 120,
+      height: MediaQuery.of(context).size.height - 200,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
         children: [
-          Container(
-            width: 260,
-            height: 800,
-            margin: EdgeInsets.only(left: 10, right: 10),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(20)),
-            child: Column(
-              children: [
-                Container(
-                  width: 260,
-                  height: 50,
-                  margin: EdgeInsets.only(bottom: 10),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Text(
-                    "step1",
-                    style: GoogleFonts.quicksand(fontSize: 16),
-                  ),
-                ),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.all(10),
-                    children: [
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+          StageView(
+            headerColor: 0xffB8FF33,
+            stageName: 'Start',
+            stageId: 'werwrw',
           ),
-          Container(
-            width: 260,
-            height: 800,
-            margin: EdgeInsets.only(left: 10, right: 10),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(20)),
-            child: Column(
-              children: [
-                Container(
-                  width: 260,
-                  height: 50,
-                  margin: EdgeInsets.only(bottom: 10),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Text(
-                    "step1",
-                    style: GoogleFonts.quicksand(fontSize: 16),
-                  ),
-                ),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.all(10),
-                    children: [
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+          StageView(
+            headerColor: 0xff33C4FF,
+            stageName: 'process',
+            stageId: 'werwrw',
           ),
-          Container(
-            width: 260,
-            height: 800,
-            margin: EdgeInsets.only(left: 10, right: 10),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.grey[100],
-                borderRadius: BorderRadius.circular(20)),
-            child: Column(
-              children: [
-                Container(
-                  width: 260,
-                  height: 50,
-                  margin: EdgeInsets.only(bottom: 10),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Text(
-                    "step1",
-                    style: GoogleFonts.quicksand(fontSize: 16),
-                  ),
-                ),
-                Expanded(
-                  child: ListView(
-                    padding: const EdgeInsets.all(10),
-                    children: [
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                      QuickViewCart(
-                        icon: Feather.bell,
-                        hoverColor: Colors.amber,
-                        text: text,
-                        title: "qwerty",
-                        percent: 60,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+          StageView(
+            headerColor: 0xffAF33FF,
+            stageName: 'dependency open',
+            stageId: 'werwrw',
           ),
-          Container(
-            width: 260,
-            height: 800,
-            margin: EdgeInsets.only(left: 3, right: 3),
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-            ),
-            child: ListView(
-              padding: const EdgeInsets.all(10),
-              children: [
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-              ],
-            ),
+          StageView(
+            headerColor: 0xffFF3342,
+            stageName: 'failed',
+            stageId: 'werwrw',
           ),
-          Container(
-            width: 260,
-            height: 800,
-            margin: EdgeInsets.only(left: 3, right: 3),
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-            ),
-            child: ListView(
-              padding: const EdgeInsets.all(10),
-              children: [
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                QuickViewCart(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-              ],
-            ),
+          StageView(
+            headerColor: 0xff3CFF33,
+            stageName: 'sucess',
+            stageId: 'werwrw',
           ),
+          StageView(
+            headerColor: 0xff3CFF33,
+            stageName: 'unprocessed',
+            stageId: 'werwrw',
+          ),
+          StageView(
+            headerColor: 0xff3CFF33,
+            stageName: 'unprocessed',
+            stageId: 'werwrw',
+          )
         ],
       ),
     );

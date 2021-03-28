@@ -34,8 +34,8 @@ class _QuickViewCartState extends State<QuickViewCart> {
         },
         child: AnimatedContainer(
           duration: Duration(milliseconds: 300),
-          width: onHovered ? 250 : 245,
-          height: onHovered ? 150 : 145,
+          width: onHovered ? 300 : 295,
+          height: onHovered ? 200 : 195,
           decoration: BoxDecoration(
               color: onHovered ? widget.hoverColor : Colors.white,
               borderRadius: BorderRadius.circular(20),
