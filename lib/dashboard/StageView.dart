@@ -55,52 +55,57 @@ class _StageViewState extends State<StageView> {
             ],
           ),
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(10),
-              children: [
-                DraggableCard(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                DraggableCard(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                DraggableCard(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                DraggableCard(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                DraggableCard(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-                DraggableCard(
-                  icon: Feather.bell,
-                  hoverColor: Colors.amber,
-                  text: text,
-                  title: "qwerty",
-                  percent: 60,
-                ),
-              ],
+            child: DragTarget(
+              builder: (context, accept, reject) => ListView(
+                padding: const EdgeInsets.all(10),
+                children: [
+                  DraggableCard(
+                      icon: Feather.bell,
+                      hoverColor: Colors.amber,
+                      text: text,
+                      title: "qwerty",
+                      percent: 60,
+                      id: "1"),
+                  DraggableCard(
+                      icon: Feather.bell,
+                      hoverColor: Colors.amber,
+                      text: text,
+                      title: "qwerty",
+                      percent: 60,
+                      id: "2"),
+                  DraggableCard(
+                      icon: Feather.bell,
+                      hoverColor: Colors.amber,
+                      text: text,
+                      title: "qwerty",
+                      percent: 60,
+                      id: "3"),
+                  DraggableCard(
+                      icon: Feather.bell,
+                      hoverColor: Colors.amber,
+                      text: text,
+                      title: "qwerty",
+                      percent: 60,
+                      id: "4"),
+                  DraggableCard(
+                      icon: Feather.bell,
+                      hoverColor: Colors.amber,
+                      text: text,
+                      title: "qwerty",
+                      percent: 60,
+                      id: "5"),
+                  DraggableCard(
+                      icon: Feather.bell,
+                      hoverColor: Colors.amber,
+                      text: text,
+                      title: "qwerty",
+                      percent: 60,
+                      id: "5"),
+                ],
+              ),
+              onAccept: (Object data) {
+                print(data);
+              },
             ),
           ),
         ],

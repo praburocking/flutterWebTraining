@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/dashboard/KanbanCard.dart';
 
 class DraggableCard extends StatefulWidget {
@@ -8,9 +7,15 @@ class DraggableCard extends StatefulWidget {
   final Color hoverColor;
   final String text;
   final int percent;
+  final String id;
 
   DraggableCard(
-      {this.icon, this.title, this.hoverColor, this.text, this.percent});
+      {this.icon,
+      this.title,
+      this.hoverColor,
+      this.text,
+      this.percent,
+      this.id});
 
   @override
   _DraggableCardState createState() => _DraggableCardState();
@@ -43,6 +48,7 @@ class _DraggableCardState extends State<DraggableCard> {
             child: Draggable(
               child: kanbanCard,
               feedback: kanbanCard,
+              data: {"id": widget.id},
             )));
   }
 }
