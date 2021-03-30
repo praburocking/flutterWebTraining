@@ -28,29 +28,39 @@ class _DashBoardState extends State<DashBoard> {
     return Positioned(
         left: 100,
         child: Container(
+          color: Color(0xff235ad3),
           width: MediaQuery.of(context).size.width * 63,
           height: MediaQuery.of(context).size.height,
-          color: Colors.white,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 25, left: 30, bottom: 20),
-                child: Text(
-                  "Welcome Prabu..!",
-                  style: GoogleFonts.quicksand(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20.0),
+          padding: EdgeInsets.zero,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 63,
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    bottomLeft: Radius.circular(30))),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 25, left: 30, bottom: 20),
+                  child: Text(
+                    "Welcome Prabu..!",
+                    style: GoogleFonts.quicksand(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0),
+                  ),
                 ),
-              ),
-              Tabs(
-                selected: selected,
-                tabs: tabs,
-                onSelect: tabSelect,
-              ),
-              CardsScreen()
-            ],
+                Tabs(
+                  selected: selected,
+                  tabs: tabs,
+                  onSelect: tabSelect,
+                ),
+                CardsScreen()
+              ],
+            ),
           ),
         ));
   }
