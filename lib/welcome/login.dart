@@ -81,7 +81,32 @@ class _LoginState extends State<Login> {
                   child: Text("Login",
                       style: GoogleFonts.quicksand(
                           fontWeight: FontWeight.bold, fontSize: 20)),
-                ))
+                )),
+            SizedBox(
+              height: 70,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "doesn't have an account create one ",
+                  style: GoogleFonts.quicksand(
+                      fontSize: 20, fontWeight: FontWeight.w300),
+                ),
+                InkWell(
+                  onTap: () {
+                    widget.loginAction();
+                  },
+                  child: Text(
+                    'here',
+                    style: GoogleFonts.quicksand(
+                        color: Colors.blue,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),
