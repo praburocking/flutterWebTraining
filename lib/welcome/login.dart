@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utilWidgets/textForm.dart';
+import 'package:get/get.dart';
 
 class Login extends StatefulWidget {
   final Function loginAction;
@@ -74,7 +75,7 @@ class _LoginState extends State<Login> {
             OutlinedButton(
                 style: ButtonStyle(),
                 onPressed: () {
-                  widget.loginAction();
+                  Get.toNamed('/home');
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
