@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/dashboard/StageView.dart';
+import 'package:myapp/home/innerWidgets/dashboard/views/StageView.dart';
 
 class CardsScreen extends StatefulWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/dashboard/KanbanCard.dart';
+import 'package:myapp/home/innerWidgets/dashboard/views/KanbanCard.dart';
 
 class DraggableCard extends StatefulWidget {
   final IconData icon;

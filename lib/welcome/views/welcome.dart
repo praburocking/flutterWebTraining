@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/welcome/login.dart';
+import 'package:myapp/welcome/views/login.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class WelcomePage extends StatefulWidget {

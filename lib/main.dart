@@ -1,17 +1,34 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:myapp/Dashboard.dart';
-import 'package:myapp/NavBar.dart';
-import 'package:myapp/welcome/welcome.dart';
+import 'package:myapp/home/innerWidgets/dashboard/views/Dashboard.dart';
+import 'package:myapp/home/views/NavBar.dart';
+import 'package:myapp/welcome/controllers/AuthController.dart';
+import 'package:myapp/welcome/views/welcome.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_strategy/url_strategy.dart';
 import 'package:get/get.dart';
+import 'package:cookie_jar/cookie_jar.dart';
 
-void main() {
+void main() async {
+  Cookie c = Cookie("name", "prabu");
+  c.httpOnly = false;
+  List<Cookie> cookies = [c, Cookie("location", "china")];
+  var cj = CookieJar();
+  //Save cookies
+  await cj.saveFromResponse(Uri.parse("http://localhost:8000/"), cookies);
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  // await prefs.setInt('counter', 987212);
+  print(prefs.getInt('counter'));
+  List<Cookie> results =
+      await cj.loadForRequest(Uri.parse("http://localhost:8000/"));
+  print(results);
   setPathUrlStrategy();
   runApp(GetMaterialApp(
-    home: Home(),
+    home: MyApp(),
     initialRoute: '/',
     getPages: [
-      GetPage(name: '/', page: () => Home()),
+      GetPage(name: '/', page: () => MyApp()),
       GetPage(
           name: '/login',
           page: () => Material(
@@ -29,80 +46,17 @@ void main() {
   ));
 }
 
-class Controller extends GetxController {
-  var count = 0.obs;
-  increment() => count++;
-}
-
-class Home extends StatelessWidget {
-  const Home({Key key}) : super(key: key);
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Controller c = Get.put(Controller());
-    return Container(
-      child: Scaffold(
-        body: Column(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              child: Obx(
-                () => Text(
-                  'clickable ' + c.count.toString(),
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-            Container(
-              child: TextButton(
-                child: Text('click me'),
-                onPressed: () {
-                  c.increment();
-                },
-              ),
-            ),
-            Container(
-              child: TextButton(
-                child: Text('click me to move to login'),
-                onPressed: () {
-                  Get.toNamed('/login');
-                },
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  bool isLoggedIn = false;
-  @override
-  Widget build(BuildContext context) {
+    AuthController controller = Get.put(AuthController());
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Stack(
-          children: isLoggedIn
-              ? [NavBar(), DashBoard()]
-              : [
-                  WelcomePage(
-                    loginAction: () {
-                      setState(() {
-                        isLoggedIn = true;
-                      });
-                    },
-                  )
-                ],
-        ),
-      ),
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Obx(() => controller.isLogedIn.value
+              ? Stack(children: [NavBar(), DashBoard()])
+              : Stack(children: [WelcomePage()]))),
     );
   }
 }

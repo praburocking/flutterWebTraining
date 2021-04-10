@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'package:myapp/CompName.dart';
-import 'package:myapp/InnerNavBar.dart';
+import 'package:myapp/home/views/CompName.dart';
+import 'package:myapp/home/views/InnerNavBar.dart';
 
 class NavBar extends StatefulWidget {
   @override

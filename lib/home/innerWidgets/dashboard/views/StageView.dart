@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myapp/dashboard/DraggableCard.dart';
+import 'package:myapp/home/innerWidgets/dashboard/views/DraggableCard.dart';
 
 class StageView extends StatefulWidget {
   final String stageName;

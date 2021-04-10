@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/utilWidgets/textForm.dart';
 import 'package:get/get.dart';
+import 'package:myapp/welcome/controllers/AuthController.dart';
 
 class Login extends StatefulWidget {
   final Function loginAction;
@@ -14,6 +15,7 @@ class _LoginState extends State<Login> {
   bool isOpen = true;
   @override
   Widget build(BuildContext context) {
+    AuthController authCont = Get.find();
     return Positioned(
       left: isOpen
           ? MediaQuery.of(context).size.width * 0.60
@@ -75,7 +77,7 @@ class _LoginState extends State<Login> {
             OutlinedButton(
                 style: ButtonStyle(),
                 onPressed: () {
-                  Get.toNamed('/home');
+                  authCont.updateLogedIn();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -96,7 +98,7 @@ class _LoginState extends State<Login> {
                 ),
                 InkWell(
                   onTap: () {
-                    widget.loginAction();
+                    Get.snackbar('test', 'indian');
                   },
                   child: Text(
                     'here',
