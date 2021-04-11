@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:myapp/welcome/controllers/AuthController.dart';
 import 'package:myapp/welcome/views/login.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class WelcomePage extends StatefulWidget {
+class WelcomePage extends StatelessWidget {
   final Function loginAction;
   WelcomePage({this.loginAction});
-  @override
-  _WelcomePageState createState() => _WelcomePageState();
-}
 
-class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    AuthController authController = Get.put(AuthController());
+
+    Widget welcome = Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(color: Colors.blueGrey),
@@ -46,11 +46,20 @@ class _WelcomePageState extends State<WelcomePage> {
               }).toList(),
             ),
           ),
-          Login(
-            loginAction: widget.loginAction,
-          )
+          Login()
         ],
       ),
     );
+    return Obx(() {
+      print('auth value in welcome ==> ' +
+          authController.isLogedIn.value.toString());
+      if (authController.isLogedIn.value) {
+        Get.toNamed('/home');
+        return null;
+      } else {
+        return welcome;
+      }
+    });
+    //Obx(() => authController.isLogedIn.value ? Get.toNamed('/home') : welcome);
   }
 }
