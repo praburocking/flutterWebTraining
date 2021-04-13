@@ -1,22 +1,28 @@
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:myapp/welcome/provider/AuthProvider.dart';
 
 class AuthController extends GetxController {
   var isLogedIn = false.obs;
   var token = ''.obs;
+  final AuthProvider authProvider;
 
+  AuthController({this.authProvider});
   @override
   onInit() async {
     super.onInit();
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token', 'qwertyuiop');
-    token.value = prefs.getString('token');
-    print(token.value);
-    if (token.value != '' && token.value != null) {
+    ever(isLogedIn, (_) {
+      isLogedIn.value ? Get.toNamed('/home') : Get.toNamed('/login');
+      print('once execution');
+    });
+
+    var loginRes = await authProvider.getAccount();
+    // loginRes.then((value) => print(value.user));
+    print(loginRes);
+    if (loginRes != null) {
       isLogedIn.value = true;
       print('isLogedIn value ==>' + isLogedIn.value.toString());
     }
   }
 
-  void updateLogedIn() {}
+  updateLogedIn() {}
 }

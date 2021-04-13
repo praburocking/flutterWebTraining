@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myapp/welcome/controllers/AuthController.dart';
+import 'package:myapp/welcome/provider/AuthProvider.dart';
 import 'package:myapp/welcome/views/login.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -10,8 +11,9 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AuthController authController = Get.put(AuthController());
-
+    AuthController authController =
+        Get.put(AuthController(authProvider: Get.put(AuthProvider())));
+    print(authController.isLogedIn);
     Widget welcome = Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
@@ -50,16 +52,7 @@ class WelcomePage extends StatelessWidget {
         ],
       ),
     );
-    return Obx(() {
-      print('auth value in welcome ==> ' +
-          authController.isLogedIn.value.toString());
-      if (authController.isLogedIn.value) {
-        Get.toNamed('/home');
-        return null;
-      } else {
-        return welcome;
-      }
-    });
-    //Obx(() => authController.isLogedIn.value ? Get.toNamed('/home') : welcome);
+
+    return welcome;
   }
 }

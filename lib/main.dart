@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:myapp/home/innerWidgets/dashboard/views/Dashboard.dart';
 import 'package:myapp/home/views/NavBar.dart';
+import 'package:myapp/utilWidgets/splashScreen.dart';
 import 'package:myapp/welcome/controllers/AuthController.dart';
 import 'package:myapp/welcome/views/welcome.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -13,7 +14,7 @@ void main() {
   runApp(GetMaterialApp(
     initialRoute: '/login',
     getPages: [
-      GetPage(name: '/', page: () => MyApp()),
+      GetPage(name: '/', page: () => SplashScreen()),
       GetPage(
           name: '/login',
           page: () => Material(
