@@ -16,6 +16,26 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     AuthController authCont = Get.find();
+    TextForm email = TextForm(
+      label: 'EMail',
+      validator: () {},
+      icon: Icon(
+        Icons.email_outlined,
+        color: Color(0xff235ad3),
+      ),
+      color: Color(0xff235ad3),
+    );
+    TextForm password = TextForm(
+      label: 'Password',
+      validator: () {},
+      icon: Icon(
+        Icons.share_outlined,
+        color: Color(0xff235ad3),
+      ),
+      color: Color(0xff235ad3),
+      type: "password",
+    );
+
     return Positioned(
       left: isOpen
           ? MediaQuery.of(context).size.width * 0.60
@@ -46,28 +66,11 @@ class _LoginState extends State<Login> {
               width: 500,
               child: Column(
                 children: [
-                  TextForm(
-                    label: 'EMail',
-                    validator: () {},
-                    icon: Icon(
-                      Icons.email_outlined,
-                      color: Color(0xff235ad3),
-                    ),
-                    color: Color(0xff235ad3),
-                  ),
+                  email,
                   SizedBox(
                     height: 15,
                   ),
-                  TextForm(
-                    label: 'Password',
-                    validator: () {},
-                    icon: Icon(
-                      Icons.share_outlined,
-                      color: Color(0xff235ad3),
-                    ),
-                    color: Color(0xff235ad3),
-                    type: "password",
-                  ),
+                  password
                 ],
               ),
             ),
@@ -77,7 +80,10 @@ class _LoginState extends State<Login> {
             OutlinedButton(
                 style: ButtonStyle(),
                 onPressed: () {
-                  authCont.updateLogedIn();
+                  print(email.textController.text);
+                  print(password.textController.text);
+                  authCont.login(
+                      email.textController.text, password.textController.text);
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:get/get_connect/connect.dart';
 import 'package:myapp/Constants.dart';
-import 'package:myapp/welcome/models/LoginReq.dart';
 import 'package:myapp/welcome/models/loginRes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends GetConnect {
   SharedPreferences prefs = null;
-  void onInit() async {
+  @override
+  onInit() async {
     prefs = await SharedPreferences.getInstance();
     httpClient.defaultDecoder = (map) => LoginRes.fromJson(map);
     httpClient.baseUrl = Constants.URL_BASE + "/iam/";
@@ -25,15 +25,24 @@ class AuthProvider extends GetConnect {
   }
 
   Future<LoginRes> getAccount() async {
+    if (prefs == null) {
+      prefs = await SharedPreferences.getInstance();
+    }
     String token = prefs.getString('token');
-
-    Map<String, String> headers = {"authorization": "token " + token};
-    var response = await get(
-        "http://" + Constants.URL_BASE + "/iam/" + 'accounts',
-        headers: headers);
-    return LoginRes.fromJson(response.body);
+    if (token != null) {
+      Map<String, String> headers = {"authorization": "token " + token};
+      var response = await get(Constants.URL_BASE + "/iam/" + 'accounts',
+          headers: headers);
+      return LoginRes.fromJson(response.body);
+    } else {
+      return null;
+    }
   }
 
-  Future<Response<LoginRes>> login(LoginReq data) async =>
-      await post('login', data);
+  Future<LoginRes> login(var data) async {
+    print(data);
+    var response = await post("login", data);
+    prefs.setString('token', response.body.authtoken);
+    return LoginRes.fromJson(response.body);
+  }
 }

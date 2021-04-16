@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
+import 'package:myapp/welcome/models/loginRes.dart';
 import 'package:myapp/welcome/provider/AuthProvider.dart';
 
 class AuthController extends GetxController {
   var isLogedIn = false.obs;
   var token = ''.obs;
   final AuthProvider authProvider;
+  var loginRes = new LoginRes().obs;
 
   AuthController({this.authProvider});
   @override
@@ -15,13 +17,23 @@ class AuthController extends GetxController {
       print('once execution');
     });
 
-    var loginRes = await authProvider.getAccount();
-    // loginRes.then((value) => print(value.user));
-    print(loginRes);
-    if (loginRes != null) {
-      isLogedIn.value = true;
-      print('isLogedIn value ==>' + isLogedIn.value.toString());
+    var value = await authProvider.getAccount();
+    if (value != null) {
+      loginRes.value = value;
+
+      // loginRes.then((value) => print(value.user));
+      print(loginRes);
+      if (loginRes != null) {
+        isLogedIn.value = true;
+        print('isLogedIn value ==>' + isLogedIn.value.toString());
+      }
     }
+  }
+
+  login(email, password) async {
+    loginRes.value =
+        await authProvider.login({"email": email, "password": password});
+    print(loginRes.value);
   }
 
   updateLogedIn() {}

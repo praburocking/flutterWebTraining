@@ -11,7 +11,7 @@ class TextForm extends StatefulWidget {
 
   @override
   _TextFormState createState() => _TextFormState();
-  TextEditingController emailController = TextEditingController();
+  TextEditingController textController = TextEditingController();
   TextFormField emailField = TextFormField();
 }
 
@@ -19,7 +19,7 @@ class _TextFormState extends State<TextForm> {
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    widget.emailController.dispose();
+    widget.textController.dispose();
     super.dispose();
   }
 
@@ -30,7 +30,7 @@ class _TextFormState extends State<TextForm> {
     widget.emailField = TextFormField(
       obscureText: (widget.type == "password") ? true : false,
       style: style,
-      controller: widget.emailController,
+      controller: widget.textController,
       validator: (value) {
         widget.validator(value);
       },

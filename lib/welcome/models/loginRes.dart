@@ -11,19 +11,23 @@ String loginResToJson(LoginRes data) => json.encode(data.toJson());
 class LoginRes {
   LoginRes({
     this.user,
+    this.authtoken,
     this.license,
   });
 
   User user;
+  String authtoken;
   dynamic license;
 
   factory LoginRes.fromJson(Map<String, dynamic> json) => LoginRes(
         user: User.fromJson(json["user"]),
+        authtoken: json["authtoken"],
         license: json["license"],
       );
 
   Map<String, dynamic> toJson() => {
         "user": user.toJson(),
+        "authtoken": authtoken,
         "license": license,
       };
 }
