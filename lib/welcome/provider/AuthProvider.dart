@@ -11,7 +11,7 @@ class AuthProvider extends GetConnect {
   @override
   onInit() async {
     prefs = await SharedPreferences.getInstance();
-    httpClient.defaultDecoder = (map) => LoginRes.fromJson(map);
+    // httpClient.defaultDecoder = (map) => LoginRes.fromJson(map);
     httpClient.baseUrl = Constants.URL_BASE + "/iam/";
 
     // httpClient.addResponseModifier<LoginRes>((request, response) {
@@ -31,9 +31,12 @@ class AuthProvider extends GetConnect {
     String token = prefs.getString('token');
     if (token != null) {
       Map<String, String> headers = {"authorization": "token " + token};
-      var response = await get(Constants.URL_BASE + "/iam/" + 'accounts',
-          headers: headers);
-      return LoginRes.fromJson(response.body);
+      var response = await get('accounts', headers: headers);
+      if (Constants.SUCCESS_CODE.contains(response.statusCode)) {
+        return LoginRes.fromJson(response.body);
+      } else {
+        return null;
+      }
     } else {
       return null;
     }

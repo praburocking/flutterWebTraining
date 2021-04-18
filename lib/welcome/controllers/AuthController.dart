@@ -16,7 +16,10 @@ class AuthController extends GetxController {
       isLogedIn.value ? Get.toNamed('/home') : Get.toNamed('/login');
       print('once execution');
     });
+    //rcheckIsLoggedIn();
+  }
 
+  Future<bool> checkIsLoggedIn() async {
     var value = await authProvider.getAccount();
     if (value != null) {
       loginRes.value = value;
@@ -27,7 +30,10 @@ class AuthController extends GetxController {
         isLogedIn.value = true;
         print('isLogedIn value ==>' + isLogedIn.value.toString());
       }
+    } else {
+      isLogedIn.value = false;
     }
+    return isLogedIn.value;
   }
 
   login(email, password) async {
