@@ -3,7 +3,7 @@ import 'package:myapp/welcome/models/loginRes.dart';
 import 'package:myapp/welcome/provider/AuthProvider.dart';
 
 class AuthController extends GetxController {
-  var isLogedIn = false.obs;
+  var isLogedIn = true.obs;
   var token = ''.obs;
   final AuthProvider authProvider;
   var loginRes = new LoginRes().obs;
@@ -12,11 +12,11 @@ class AuthController extends GetxController {
   @override
   onInit() async {
     super.onInit();
-    ever(isLogedIn, (_) {
-      isLogedIn.value ? Get.toNamed('/home') : Get.toNamed('/login');
-      print('once execution');
-    });
-    //rcheckIsLoggedIn();
+    // ever(isLogedIn, (_) {
+    //   isLogedIn.value ? Get.toNamed('/home') : Get.toNamed('/login');
+    //   print('once execution');
+    // });
+    checkIsLoggedIn();
   }
 
   Future<bool> checkIsLoggedIn() async {
